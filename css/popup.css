@@ -1,0 +1,7 @@
+.popup{
+    position:absolute;
+    border:1px black solid;
+    background-color:#FFF;
+    z-index:999;
+    cursor:default;
+}
