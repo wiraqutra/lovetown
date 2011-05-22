@@ -1,5 +1,5 @@
 [
-  {"top":300,"left":150,"name":"A","data":"交番","img":"./photo/1_2.jpg"}
-  {"top":150,"left":300,"name":"B","data":"神社","img":"./photo/1_1.jpg"}
+  {"top":300,"left":150,"name":"A","data":"交番","img":"./photo/1_2.jpg"},
+  {"top":150,"left":300,"name":"B","data":"神社","img":"./photo/1_1.jpg"},
   {"top":300,"left":300,"name":"C","data":"灯台","img":"./photo/1_2.jpg"}
-];
+]
