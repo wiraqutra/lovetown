@@ -1,0 +1,5 @@
+[
+  {"top":300,"left":150,"name":"A","data":"思い出のガソリンスタンド","img":"./photo/IMG_0045_1.JPG"}
+  {"top":150,"left":300,"name":"B","data":"思い出のコンビニ","img":"./photo/IMG_0045_2.JPG"}
+  {"top":300,"left":300,"name":"C","data":"思い出の本屋","img":"./photo/IMG_0045_3.JPG"}
+];
