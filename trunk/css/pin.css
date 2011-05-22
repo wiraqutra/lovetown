@@ -1,0 +1,9 @@
+.pin{
+    position:absolute;
+    background-image:url("../pics/pin1.png");
+    background-repeat:no-repeat;
+    text-align:center;
+    width:56px;
+    height:56px;
+    z-index:98;
+}
