@@ -8,6 +8,54 @@
 	<meta name="keywords" content="" />
 	<meta http-equiv="Content-Style-Type" content="text/css"> 
 	<link rel="stylesheet" href="./css/main.css" media="all"> 
+<link href="css/popup.css" rel="stylesheet" type="text/css"/>
+<link href="css/pin.css" rel="stylesheet" type="text/css"/>
+<link href="css/ui-lightness/jquery-ui-1.8.13.custom.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.js"></script>
+<script type="text/javascript" src="js/machi.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript" src="js/pin.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>
+<script>
+$(
+    function(){
+        var $target = $("#mapcon");
+        var url=location.href;
+        var imgno = url.split("=");
+        if(imgno.length == 1){
+            imgno = ["","IMG_0045.JPG"];
+        }
+        var $img = $("<img width='600px' height='400px'>")
+        .attr("src", "map/" + imgno[1])
+        .appendTo($target);
+        
+        $.ajax({
+            "type":"GET",
+            "url":"json/" + imgno[1] + ".json",
+            "error":function(e){
+                console.debug(e);
+            },
+            "success":function(jsonList){
+                for(var jsonIndex in jsonList){
+                    var json = jsonList[jsonIndex];
+                    json.target = $target;
+                    pin(json);
+                }
+            },
+            "dataType":"json"
+        });
+
+
+        var jsonList = [
+        {"top":240,"left":170,"name":"A","data":"<div>思い出のガソリンスタンド</div>","img":"../img/text.jpg"},
+        {"top":150,"left":370,"name":"B","data":"<div>思い出のコンビニ</div>","img":"../img/text.jpg"},
+        {"top":300,"left":370,"name":"C","data":"<div>思い出の本屋</div>","img":"../img/text.jpg"}
+        ];
+        
+    }
+
+)
+</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -29,20 +77,41 @@
 		</div>
 		<div id="lowcon">
 			<div id="listcon">
+				<div id="lists">
 ・学校<br />
 ・喫茶店<br />
 ・オフィスビル<br />
 ・駅<br />
 ・お社<br />
-			</div>
-			<div id="mapcon">
-				<img alt="" title="" class="maplist_thumbnail" src="./map/originals/IMG_6674.JPG" />
-				<div id="tagtitle">タグ：
-					<div id="tags">駅、思い出の場所、神社</div>
 				</div>
 			</div>
+      <div>
+			<div id="mapcon" class="machitarget" style="width:600px;height:400px;">
+			</div>
+			<div id="tagcon">
+			<div id="tagtitle">タグ：</div>
+					<div id="tags">駅、思い出の場所、神社</div>
+				</div>
+    </div>
 		</div>
+
 		<div id="footer">フッター</div>
 	</div>
+	<div class="demo">
+
+<div id="dialog-form" title="ここにピンを追加します。">
+    <p class="validateTips">何も入力せずにOKを押すと、ピンのみ追加します。</p>
+    <form>
+        <fieldset>
+            <label for="name">画像パス</label>
+            <input type="file" name="image" id="name"  class="text ui-widget-content ui-corner-all" />
+            <label for="tags">タグ（半角スペース区切り）</label>
+            <input type="text" name="tags" id="tags" value="" class="text ui-widget-content ui-corner-all" />
+            <label for="comment">コメント</label>
+            <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+        </fieldset>
+    </form>
+</div>
+</div><!-- End demo -->
 </body>
 </html>
